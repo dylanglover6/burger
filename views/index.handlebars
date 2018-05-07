@@ -1,0 +1,70 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h2>
+        Fresh Burgers!
+      </h2>
+    </div>
+    <div class="col-6">
+      <h2>
+        Devoured Burgers!
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    {{!--Fresh Burgers Appear Here--}}
+    <div class="col-6">
+      <ul class="list-group">
+        {{#each burgers}} {{#unless eaten}}
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-8"></div>
+            <p class="text-secondary">
+              <b>id:</b>
+              <span class="text-primary">{{this.id}}</span>
+              <br>
+              <b>name:</b>
+              <span class="text-primary">{{this.burger_name}}</span>
+            </p>
+            <div class="col-4">
+              <button data-id={{this.id}} class="eatBtn btn btn-danger">Devour Burger</button>
+            </div>
+          </div>
+        </li>
+        {{/unless}} {{/each}}
+      </ul>
+    </div>
+    {{!--Eaten Burgers Apper Here--}}
+    <div class="col-6">
+      <ul class="list-group">
+        {{#each burgers}} {{#if eaten}}
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-8"></div>
+            <p class="text-secondary">
+              <b>id:</b>
+              <span class="text-primary">{{this.id}}</span>
+              <br>
+              <b>name:</b>
+              <span class="text-primary">{{this.burger_name}}</span>
+            </p>
+            <div class="col-4">
+              <button data-id={{this.id}} class="deltBtn btn btn-danger">Delete Burger</button>
+            </div>
+          </div>
+        </li>
+        {{/if}} {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<form id="addBurger">
+  <div class="form-group">
+    <label for="burgerInput"><h3>Create A Tasty Burger!</h3></label>
+    <input type="text" id="burgerInput" placeholder="Get Creative!">
+  </div>
+  <button type="submit" class="btn btn-danger">Send Burger Order</button>
+</form>
+

@@ -1,5 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var exphbs = require("express-handlebars");
 
 
 // Sets up the Express App
@@ -21,7 +22,16 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-//require("./routes/api-routes.js")(app);
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.set("view engine", "handlebars");
+
+app.use((req, res, next) => {
+	req.db = db;
+	next();
+})
+
+require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
 
 // Starting our Express app
 // =============================================================
