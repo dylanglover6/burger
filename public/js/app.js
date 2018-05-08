@@ -1,22 +1,24 @@
 $(document).ready(function() {
   
-  $("#addBurger").on("submit", function(y) {
-    y.preventDefault();
-    $.ajax("/", {
+  $("#addBurger").on("submit", function() {
+    event.preventDefault();
+    $.ajax({
       type: "POST",
+      url:"/api/burgers",
       data: {
-        name: $("#burgerInput").val().trim()
+        burger_name: $("#burgerInput").val().trim()
       },
       success: data => location.reload()
     })
   });
 
-  $(".eatBtn").on("click", function(y){
+  $(".eatBtn").on("click", function(){
     let id = $(this).data("id");
-    $.ajax(`/${id}`, {
+    $.ajax({
       type: "PUT",
+      url: "/api/burgers/" + id, 
       data: {
-        eaten: true
+        devoured: true
       },
       success: data => location.reload()
     })
@@ -24,8 +26,9 @@ $(document).ready(function() {
 
   $(".delBtn").on("click", function(e){
     let id = $(this).data("id");
-    $.ajax(`/${id}`, {
+    $.ajax({
       type: "DELETE",
+      url: "/api/burgers/" + id,
       success: data => location.reload()
     })
   });

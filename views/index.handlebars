@@ -16,18 +16,18 @@
     {{!--Fresh Burgers Appear Here--}}
     <div class="col-6">
       <ul class="list-group">
-        {{#each burgers}} {{#unless eaten}}
+        {{#each burgers}} {{#unless devoured}}
         <li class="list-group-item">
           <div class="row">
-            <div class="col-8"></div>
+            <div class="col-8">
             <p class="text-secondary">
-              <b>id:</b>
+              <b>Burger ID:</b>
               <span class="text-primary">{{this.id}}</span>
               <br>
-              <b>name:</b>
-              <span class="text-primary">{{this.burger_name}}</span>
+              <b>Burger Name:</b>
+              <span class="text-primary">{{this.burger_name}} burger</span> 
             </p>
-            <div class="col-4">
+            <br>
               <button data-id={{this.id}} class="eatBtn btn btn-danger">Devour Burger</button>
             </div>
           </div>
@@ -35,22 +35,22 @@
         {{/unless}} {{/each}}
       </ul>
     </div>
-    {{!--Eaten Burgers Apper Here--}}
+    {{!--Devoured Burgers Apper Here--}}
     <div class="col-6">
       <ul class="list-group">
-        {{#each burgers}} {{#if eaten}}
+        {{#each burgers}} {{#if devoured}}
         <li class="list-group-item">
           <div class="row">
-            <div class="col-8"></div>
+            <div class="col-8">
             <p class="text-secondary">
-              <b>id:</b>
+              <b>Burger ID:</b>
               <span class="text-primary">{{this.id}}</span>
               <br>
-              <b>name:</b>
-              <span class="text-primary">{{this.burger_name}}</span>
+              <b>Burger Name:</b>
+              <span class="text-primary">{{this.burger_name}} burger</span> 
             </p>
-            <div class="col-4">
-              <button data-id={{this.id}} class="deltBtn btn btn-danger">Delete Burger</button>
+            <br>
+              <button data-id={{this.id}} class="delBtn btn btn-danger">Delete Burger</button>
             </div>
           </div>
         </li>
@@ -62,7 +62,8 @@
 
 <form id="addBurger">
   <div class="form-group">
-    <label for="burgerInput"><h3>Create A Tasty Burger!</h3></label>
+    <label for="burgerInput"><h3>Choose Your Burger Toppings!</h3></label>
+     <br>
     <input type="text" id="burgerInput" placeholder="Get Creative!">
   </div>
   <button type="submit" class="btn btn-danger">Send Burger Order</button>
